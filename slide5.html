@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Construindo cenas de realidade virtual em 10 minutos!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Arquivos importados -->
+        <a-assets>
+            <img id="universe" src="img/universe.jpeg">
+            <a-asset-item id="spaceship-obj" src="objs/spaceship.obj"></a-asset-item>
+            <a-asset-item id="spaceship-mtl" src="objs/spaceship.mtl"></a-asset-item>
+            <a-asset-item id="planet-obj" src="objs/CHAHIN_EARTH.obj"></a-asset-item>
+            <a-asset-item id="planet-mtl" src="objs/CHAHIN_EARTH.mtl"></a-asset-item>
+            <img id="slideprev" src="img/slides/slide4.png">                        
+        </a-assets>
+
+        <!-- Aviso -->
+        <a-entity position="0 4.157 0.692" scale="5 3 1" geometry="primitive:plane" material="color:#1D299B"
+            text__aviso="wrapCount:20;align:center;value:Object universe"></a-entity>
+
+        <!-- Objetos -->
+        <a-entity obj-model="obj: #spaceship-obj; mtl: #spaceship-mtl" scale="2 2 2" position="0 1 0.5" rotation="0 35 0">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" easing="linear" dur="6000"></a-animation>
+        </a-entity>
+
+        <a-entity obj-model="obj: #planet-obj; mtl: #planet-mtl" scale="0.4 0.4 0.4" position="6.491 1.000 -1.831" rotation="0 35 0">
+            <a-animation attribute="rotation" to="0 360 0" repeat="indefinite" easing="linear" dur="12000"></a-animation>
+        </a-entity>        
+
+        <!-- Link slide anterior -->
+        <a-entity position="0 2.99 9.616" link="href:slide4.html;title:Slide 4;image:#slideprev"></a-entity>
+
+        <!-- Câmera -->
+        <a-entity position="0.3213049062189415 1.6 5.820422696483055" camera="userHeight:1.6" wasd-controls="" rotation="-9.625690958197833 -0.5729577951308232 0"
+            look-controls="">
+            <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: #CCC; shader: flat;">
+            </a-entity>
+        </a-entity>
+
+        <!-- Céu/Fundo -->
+        <a-sky color="#FFF" src="#universe"></a-sky>
+    </a-scene>
+</body>
+
+</html>

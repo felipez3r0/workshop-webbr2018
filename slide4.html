@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Construindo cenas de realidade virtual em 10 minutos!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe-event-set-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Arquivos importados -->
+        <a-assets>
+            <img id="inside" src="img/inside.JPG">
+            <img id="blocos" src="img/blocks.jpg">
+            <img id="monalisa" src="img/monalisa.jpg">
+            <img id="slideprev" src="img/slides/slide3.png">
+            <img id="slideprox" src="img/slides/slide5.png">             
+        </a-assets>
+
+        <!-- Pilares -->
+        <a-entity position="-1.986 3.99 0" geometry="height:7.77" material="src:#blocos;repeat:1 5" shadow=""></a-entity>
+        <a-entity position="0 3.99 0" geometry="height:7.77" material="src:#blocos;repeat:1 5" shadow=""></a-entity>
+        <a-entity position="1.856 3.99 0" geometry="height:7.77" material="src:#blocos;repeat:1 5" shadow=""></a-entity>
+
+        <!-- Aviso -->
+        <a-entity position="0 4.157 0.692" scale="5 3 1" geometry="primitive:plane" material="color:#1D299B"
+            text__aviso="wrapCount:20;align:center;value:Event Kingdom"></a-entity>
+
+        <!-- Objetos com eventos -->
+        <a-entity position="-5.217 4.743 6.971" scale="5 5 1" geometry="primitive:plane" material="src:" rotation="0 90 0" 
+            event-set__enter="_event: mouseenter; material.src:#monalisa " 
+            event-set__leave="_event: mouseleave; material.src:"></a-entity>
+
+        <!-- Link slide anterior -->
+        <a-entity position="0 2.99 9.616" link="href:slide3.html;title:Slide 3;image:#slideprev"></a-entity>
+
+        <!-- Link para o próximo slide -->
+        <a-entity position="8.442 2.99 -4.083" link="href:slide5.html;title:Slide 5;image:#slideprox"></a-entity>
+
+        <!-- Câmera -->
+        <a-entity position="0.3213049062189415 1.6 5.820422696483055" camera="userHeight:1.6" wasd-controls="" rotation="-9.625690958197833 -0.5729577951308232 0"
+            look-controls="">
+            <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                material="color: #CCC; shader: flat;">
+            </a-entity>
+        </a-entity>
+
+        <!-- Céu/Fundo -->
+        <a-sky color="#FFF" src="#inside"></a-sky>
+    </a-scene>
+</body>
+
+</html>
